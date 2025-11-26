@@ -29,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGround;
 
+    private bool inventoryOpen = false;
+    [SerializeField] private GameObject inventoryUI; // Panel del Canvas con el texto
+    [SerializeField] private TMPro.TextMeshProUGUI inventoryText; // Texto donde se mostrarán los ítems
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -67,6 +72,8 @@ public class PlayerMovement : MonoBehaviour
         controls.Player.Jump.performed += OnJump;
         // Asigna la acción de "Interactuar" (debes crearla en tu Input Action Asset)
         controls.Player.Interact.performed += OnInteract;
+        controls.Player.Inventory.performed += OnInventoryToggle; // <-- ESTA LÍNEA
+
     }
     private void OnDisable()
     {
@@ -75,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
         controls.Player.Move.canceled -= OnMoveCanceled;
         controls.Player.Jump.performed -= OnJump;
         controls.Player.Interact.performed -= OnInteract;
+        controls.Player.Inventory.performed -= OnInventoryToggle; // <-- ESTA LÍNEA
+
     }
 
     private void OnMovePerformed(InputAction.CallbackContext ctx)
@@ -159,4 +168,28 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    private void OnInventoryToggle(InputAction.CallbackContext context)
+    {
+        inventoryOpen = !inventoryOpen; // Toggle
+
+        inventoryUI.SetActive(inventoryOpen);
+
+        if (inventoryOpen)
+        {
+            // Mostrar inventario en texto
+            inventoryText.text = inventory.GetInventoryText();
+
+            // Mostrar cursor para usar el inventario
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            // Volver al modo juego
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+    }
+
 }
