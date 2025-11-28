@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class PickableItem : MonoBehaviour
 {
-    [SerializeField] private string itemName = "Item";
-    public string ItemName => itemName;
+    [Header("Prefab que se guardará en el inventario")]
+    public GameObject itemPrefab;
 
     public void PickUp()
     {
-        Debug.Log("Recogido: " + itemName);
+        InventoryManager.Instance.AddItem(itemPrefab);
         Destroy(gameObject);
     }
 }

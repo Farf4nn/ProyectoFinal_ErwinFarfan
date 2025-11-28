@@ -1,18 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement; // IMPORTANTE
+using UnityEngine.SceneManagement;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] private List<string> items = new List<string>();
-    [SerializeField] private int maxItems = 10; // <= CANTIDAD A ENCONTRAR
-    [SerializeField] private TMPro.TextMeshProUGUI contadorText; // Texto donde se mostrarán los ítems
-
-
-    private void Update()
-    {
-        contadorText.text = "Objetos: " + items.Count + "/10";
-    }
+    [SerializeField] private List<GameObject> items = new List<GameObject>();
+    [SerializeField] private int maxItems = 10;
+    [SerializeField] private TMPro.TextMeshProUGUI contadorText;
 
     public static InventoryManager Instance { get; private set; }
 
@@ -29,35 +23,61 @@ public class InventoryManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void AddItem(string itemName)
+    private void Update()
     {
-        items.Add(itemName);
-        Debug.Log("Inventario actual: " + string.Join(", ", items));
+        if (contadorText)
+            contadorText.text = $"Objetos: {items.Count}/{maxItems}";
+    }
 
+    public void AddItem(GameObject itemObject)
+    {
+        // Limpia referencias a objetos destruidos
+        items.RemoveAll(i => i == null);
+
+        items.Add(itemObject);
+        Debug.Log("Inventario actual: " + items.Count);
         CheckWinCondition();
+    }
+
+    public bool HasItem(GameObject obj)
+    {
+        return items.Contains(obj);
+    }
+
+    public bool HasItems(GameObject[] requiredObjects)
+    {
+        foreach (var obj in requiredObjects)
+        {
+            if (!items.Contains(obj))
+                return false;
+        }
+        return true;
     }
 
     public string GetInventoryText()
     {
         if (items.Count == 0) return "Inventario vacío.";
-        return "Objetos encontrados (" + items.Count + "/10):\n" + string.Join("\n", items);
+
+        string text = $"Objetos encontrados ({items.Count}/{maxItems}):\n";
+
+        foreach (var g in items)
+        {
+            if (g != null)
+                text += "- " + g.name + "\n";
+        }
+
+        return text;
     }
 
     private void CheckWinCondition()
     {
         if (items.Count >= maxItems)
         {
-            Debug.Log("¡HAS GANADO!");
-
-            // Detener el temporizador
             GameTimer.Instance.isRunning = false;
 
-            // Guardar el tiempo final
             PlayerPrefs.SetString("FinalTime", GameTimer.Instance.GetFormattedTime());
 
-            // Cargar escena final
-            SceneManager.LoadScene("Win");
+            Debug.Log("GANASTE!");
         }
     }
-
 }

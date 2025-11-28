@@ -1,5 +1,4 @@
-using System;
-using Unity.Cinemachine;
+ï»¿using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,20 +7,18 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rb;
     private PlayerControls controls;
     private Vector2 moveInput;
-    private InventoryManager inventory; // Referencia al inventario
+    private InventoryManager inventory;
 
     [Header("References")]
     [SerializeField] private CinemachineCamera playerCamera;
 
     [Header("Attributes")]
-    [SerializeField] private float moveSpeed = 10f;
-    [SerializeField] private float maxSpeed = 5f;
-    [SerializeField] private float jumpForce = 5f;
-    [SerializeField] private float interactionDistance = 3f; // Rango del raycast
+    [SerializeField] private float moveSpeed = 6f;
+    [SerializeField] private float interactionDistance = 3f;
 
     [Header("GroundCheck")]
     [SerializeField] Transform groundCheck;
-    [SerializeField] private float groundDistance;
+    [SerializeField] private float groundDistance = 0.2f;
     [SerializeField] private LayerMask groundMask;
 
     [SerializeField] private GameObject interactText;
@@ -30,61 +27,57 @@ public class PlayerMovement : MonoBehaviour
     private bool isGround;
 
     private bool inventoryOpen = false;
-    [SerializeField] private GameObject inventoryUI; // Panel del Canvas con el texto
-    [SerializeField] private TMPro.TextMeshProUGUI inventoryText; // Texto donde se mostrarán los ítems
+    [SerializeField] private GameObject inventoryUI;
+    [SerializeField] private TMPro.TextMeshProUGUI inventoryText;
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+
         controls = new PlayerControls();
 
-        // Bloquea el cursor en el centro de la pantalla para la funcionalidad del raycast
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
     private void Start()
     {
         inventory = InventoryManager.Instance;
-
-        if (inventory == null)
-        {
-            Debug.LogError("InventoryManager no existe en la escena.");
-        }
     }
 
     private void Update()
     {
         CheckForInteractable();
+        GroundCheck();
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
-        GroundChech();
     }
 
     private void OnEnable()
     {
         controls.Enable();
+
         controls.Player.Move.performed += OnMovePerformed;
         controls.Player.Move.canceled += OnMoveCanceled;
-        controls.Player.Jump.performed += OnJump;
-        // Asigna la acción de "Interactuar" (debes crearla en tu Input Action Asset)
         controls.Player.Interact.performed += OnInteract;
-        controls.Player.Inventory.performed += OnInventoryToggle; // <-- ESTA LÍNEA
-
+        controls.Player.Inventory.performed += OnInventoryToggle;
     }
+
     private void OnDisable()
     {
         controls.Disable();
+
         controls.Player.Move.performed -= OnMovePerformed;
         controls.Player.Move.canceled -= OnMoveCanceled;
-        controls.Player.Jump.performed -= OnJump;
         controls.Player.Interact.performed -= OnInteract;
-        controls.Player.Inventory.performed -= OnInventoryToggle; // <-- ESTA LÍNEA
-
+        controls.Player.Inventory.performed -= OnInventoryToggle;
     }
+
 
     private void OnMovePerformed(InputAction.CallbackContext ctx)
     {
@@ -96,100 +89,88 @@ public class PlayerMovement : MonoBehaviour
         moveInput = Vector2.zero;
     }
 
-    private void OnInteract(InputAction.CallbackContext context)
-    {
-        // Este método se llama cuando presionas el botón de interactuar
-        TryPickUpObject();
-    }
-
     private void MovePlayer()
     {
         if (playerCamera == null) return;
 
-        Vector3 cameraForward = Vector3.ProjectOnPlane(playerCamera.transform.forward, Vector3.up).normalized;
-        Vector3 cameraRight = Vector3.ProjectOnPlane(playerCamera.transform.right, Vector3.up).normalized;
-        Vector3 moveDirection = cameraForward * moveInput.y + cameraRight * moveInput.x;
+        Vector3 fwd = Vector3.ProjectOnPlane(playerCamera.transform.forward, Vector3.up).normalized;
+        Vector3 right = Vector3.ProjectOnPlane(playerCamera.transform.right, Vector3.up).normalized;
 
-        rb.AddForce(moveDirection * moveSpeed, ForceMode.Impulse);
+        Vector3 direction = fwd * moveInput.y + right * moveInput.x;
+        direction.Normalize();
 
-        Vector3 horizontalVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-        if (horizontalVelocity.magnitude > maxSpeed)
-        {
-            Vector3 limitedVelocity = horizontalVelocity.normalized * maxSpeed;
-            rb.linearVelocity = new Vector3(limitedVelocity.x, rb.linearVelocity.y, limitedVelocity.z);
-        }
+        Vector3 newVel = direction * moveSpeed;
+        newVel.y = rb.linearVelocity.y;
+
+        rb.linearVelocity = newVel;
     }
 
-    private void OnJump(InputAction.CallbackContext context)
-    {
-        if (isGround)
-        {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
-    }
-
-    private void GroundChech()
+    private void GroundCheck()
     {
         isGround = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
     }
 
-    // Lógica del Raycast y Recogida
     private void CheckForInteractable()
     {
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, interactionDistance, interactionMask))
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward,
+            interactionDistance, interactionMask))
         {
-            Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward * interactionDistance, Color.green);
             interactText.SetActive(true);
         }
         else
         {
-            Debug.DrawRay(playerCamera.transform.position, playerCamera.transform.forward * interactionDistance, Color.red);
             interactText.SetActive(false);
         }
+    }
+
+    private void OnInteract(InputAction.CallbackContext ctx)
+    {
+        TryPickUpObject();
     }
 
     private void TryPickUpObject()
     {
         RaycastHit hit;
-        // Dispara un rayo desde el centro de la cámara hacia adelante
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward, out hit, interactionDistance))
-        {
-            // Comprueba si el objeto golpeado tiene el script PickableItem
-            PickableItem item = hit.collider.GetComponent<PickableItem>();
 
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward,
+            out hit, interactionDistance))
+        {
+            // OBJETO
+            PickableItem item = hit.collider.GetComponent<PickableItem>();
             if (item != null)
             {
-                // Si lo tiene, lo añadimos al inventario y lo "recogemos" (destruimos en este caso simple)
-                if (inventory != null)
-                {
-                    inventory.AddItem(item.ItemName);
-                    item.PickUp();
-                }
+                inventory.AddItem(item.itemPrefab);
+                item.PickUp();
+                return;
+            }
+
+            // PUERTA
+            DoorUnlock door = hit.collider.GetComponent<DoorUnlock>();
+            if (door != null)
+            {
+                door.TryOpenDoor();
+                return;
             }
         }
     }
 
+
     private void OnInventoryToggle(InputAction.CallbackContext context)
     {
-        inventoryOpen = !inventoryOpen; // Toggle
+        inventoryOpen = !inventoryOpen;
 
         inventoryUI.SetActive(inventoryOpen);
 
         if (inventoryOpen)
         {
-            // Mostrar inventario en texto
             inventoryText.text = inventory.GetInventoryText();
-
-            // Mostrar cursor para usar el inventario
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
         else
         {
-            // Volver al modo juego
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
     }
-
 }
