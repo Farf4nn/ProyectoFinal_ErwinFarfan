@@ -16,11 +16,11 @@ public class DoorUnlock : MonoBehaviour
         if (inv.HasItems(requiredObjects))
         {
             isOpen = true;
-            Debug.Log("Puerta abierta.");
+            Debug.Log("Puerta abierta. pasele mijo");
         }
         else
         {
-            Debug.Log("Faltan objetos para abrir la puerta.");
+            Debug.Log("Faltan objetos para abrir la puerta. TA CERRAHA LA PUERTA");
         }
     }
 }

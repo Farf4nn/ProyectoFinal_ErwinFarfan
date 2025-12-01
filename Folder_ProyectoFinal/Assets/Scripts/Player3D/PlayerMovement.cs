@@ -1,6 +1,7 @@
 ﻿using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -112,8 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckForInteractable()
     {
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward,
-            interactionDistance, interactionMask))
+        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward,interactionDistance, interactionMask))
         {
             interactText.SetActive(true);
         }
