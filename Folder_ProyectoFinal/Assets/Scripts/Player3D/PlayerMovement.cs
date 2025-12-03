@@ -29,8 +29,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool inventoryOpen = false;
     [SerializeField] private GameObject inventoryUI;
-    [SerializeField] private TMPro.TextMeshProUGUI inventoryText;
-
+    [SerializeField] private TextMeshPro inventoryText;
 
     private void Awake()
     {
@@ -79,7 +78,6 @@ public class PlayerMovement : MonoBehaviour
         controls.Player.Inventory.performed -= OnInventoryToggle;
     }
 
-
     private void OnMovePerformed(InputAction.CallbackContext ctx)
     {
         moveInput = ctx.ReadValue<Vector2>();
@@ -113,7 +111,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckForInteractable()
     {
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward,interactionDistance, interactionMask))
+        if (Physics.Raycast(playerCamera.transform.position,
+                            playerCamera.transform.forward,
+                            interactionDistance,
+                            interactionMask))
         {
             interactText.SetActive(true);
         }
@@ -125,21 +126,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnInteract(InputAction.CallbackContext ctx)
     {
-        TryPickUpObject();
+        TryPickUpOrInteract();
     }
 
-    private void TryPickUpObject()
+    private void TryPickUpOrInteract()
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(playerCamera.transform.position, playerCamera.transform.forward,
-            out hit, interactionDistance))
+        if (Physics.Raycast(playerCamera.transform.position,
+                            playerCamera.transform.forward,
+                            out hit,
+                            interactionDistance,
+                            interactionMask))
         {
-            // OBJETO
+            // OBJETO RECOGIBLE
             PickableItem item = hit.collider.GetComponent<PickableItem>();
             if (item != null)
             {
-                inventory.AddItem(item.itemPrefab);
                 item.PickUp();
                 return;
             }
@@ -153,7 +156,6 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-
 
     private void OnInventoryToggle(InputAction.CallbackContext context)
     {

@@ -1,26 +1,27 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DoorUnlock : MonoBehaviour
 {
-    [Header("Objetos requeridos")]
-    public GameObject[] requiredObjects;
+    private bool isUnlocked = false;
 
-    private bool isOpen = false;
+    [SerializeField] private string winSceneName = "WinScene";
+
+    public void UnlockDoor()
+    {
+        isUnlocked = true;
+        Debug.Log("La puerta ahora ESTÁ DESBLOQUEADA.");
+    }
 
     public void TryOpenDoor()
     {
-        if (isOpen) return;
-
-        InventoryManager inv = InventoryManager.Instance;
-
-        if (inv.HasItems(requiredObjects))
+        if (!isUnlocked)
         {
-            isOpen = true;
-            Debug.Log("Puerta abierta. pasele mijo");
+            Debug.Log("La puerta está cerrada todavía.");
+            return;
         }
-        else
-        {
-            Debug.Log("Faltan objetos para abrir la puerta. TA CERRAHA LA PUERTA");
-        }
+
+        Debug.Log("Puerta abierta. Cargando escena de victoria…");
+        SceneManager.LoadScene(winSceneName);
     }
 }
