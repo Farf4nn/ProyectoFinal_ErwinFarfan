@@ -7,6 +7,21 @@ public class GameTimer : MonoBehaviour
     private float elapsedTime = 0f;
     public bool isRunning = true;
     [SerializeField] TMP_Text timerText;  // Arrastrar desde el inspector
+    private void Awake()
+    {
+        transform.SetParent(null);
+        DontDestroyOnLoad(gameObject);
+
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Update()
     {
@@ -18,18 +33,7 @@ public class GameTimer : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    
 
     // Devuelve tiempo en minutos y segundos
     public string GetFormattedTime()
