@@ -2382,6 +2382,10 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 2132717893}
+    - target: {fileID: 2337560769071211656, guid: 498921a9fd4161a42a39b8d568dfd13c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 43bc30c36e6730c48b829daca7000dab, type: 2}
     - target: {fileID: 3713593049158346997, guid: 498921a9fd4161a42a39b8d568dfd13c, type: 3}
       propertyPath: m_Name
       value: Enemy2
@@ -4916,6 +4920,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1217682204}
+    - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1217682205}
   m_SourcePrefab: {fileID: 100100000, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
 --- !u!4 &175454775 stripped
 Transform:
@@ -7013,6 +7020,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 243099386}
+--- !u!114 &243099389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243099386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b3017ea3bd6e43bb86de5ac0d18a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: Frasco5
 --- !u!1 &247603942
 GameObject:
   m_ObjectHideFlags: 0
@@ -9411,6 +9431,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1391362877}
+    - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1391362878}
   m_SourcePrefab: {fileID: 100100000, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
 --- !u!1 &315634313
 GameObject:
@@ -16509,6 +16532,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 543383319}
+--- !u!114 &543383322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543383319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b3017ea3bd6e43bb86de5ac0d18a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: Frasco9
 --- !u!1 &543438510
 GameObject:
   m_ObjectHideFlags: 0
@@ -21104,6 +21140,10 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[5]'
       value: 
       objectReference: {fileID: 1168553602}
+    - target: {fileID: 2337560769071211656, guid: 498921a9fd4161a42a39b8d568dfd13c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 43bc30c36e6730c48b829daca7000dab, type: 2}
     - target: {fileID: 3713593049158346997, guid: 498921a9fd4161a42a39b8d568dfd13c, type: 3}
       propertyPath: m_Name
       value: Enemy4
@@ -22809,6 +22849,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 797216437}
+    - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 797216438}
   m_SourcePrefab: {fileID: 100100000, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
 --- !u!1 &754064463
 GameObject:
@@ -23787,6 +23830,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 797216435}
+--- !u!114 &797216438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797216435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b3017ea3bd6e43bb86de5ac0d18a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: Frasco10
 --- !u!1 &801635110
 GameObject:
   m_ObjectHideFlags: 0
@@ -24186,6 +24242,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 243099388}
+    - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 243099389}
   m_SourcePrefab: {fileID: 100100000, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
 --- !u!1 &807371493
 GameObject:
@@ -24388,8 +24447,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7b48f3e6e3d4c04da42db2b6db8191a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
-  maxItems: 10
+  expectedItemIDs:
+  - Frasco1
+  - Frasco2
+  - Frasco3
+  - Frasco4
+  - Frasco5
+  - Frasco6
+  - Frasco7
+  - Frasco8
+  - Frasco9
+  - Frasco10
   contadorText: {fileID: 1446477198}
   door: {fileID: 1090877226}
 --- !u!4 &812395019
@@ -29825,6 +29893,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1670056451}
+    - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1670056452}
   m_SourcePrefab: {fileID: 100100000, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
 --- !u!1 &958595734
 GameObject:
@@ -31985,6 +32056,10 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[3]'
       value: 
       objectReference: {fileID: 463602900}
+    - target: {fileID: 2337560769071211656, guid: 498921a9fd4161a42a39b8d568dfd13c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 43bc30c36e6730c48b829daca7000dab, type: 2}
     - target: {fileID: 3713593049158346997, guid: 498921a9fd4161a42a39b8d568dfd13c, type: 3}
       propertyPath: m_Name
       value: Enemy7
@@ -32944,6 +33019,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 1062447017}
+--- !u!114 &1062447020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062447017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b3017ea3bd6e43bb86de5ac0d18a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: Frasco6
 --- !u!1 &1064440045
 GameObject:
   m_ObjectHideFlags: 0
@@ -35893,6 +35981,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 1217682202}
+--- !u!114 &1217682205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217682202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b3017ea3bd6e43bb86de5ac0d18a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: Frasco8
 --- !u!1 &1222272512
 GameObject:
   m_ObjectHideFlags: 0
@@ -36915,6 +37016,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 543383321}
+    - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 543383322}
   m_SourcePrefab: {fileID: 100100000, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
 --- !u!1 &1259623500
 GameObject:
@@ -40685,6 +40789,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 1391362875}
+--- !u!114 &1391362878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391362875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b3017ea3bd6e43bb86de5ac0d18a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: Frasco4
 --- !u!1 &1393197989
 GameObject:
   m_ObjectHideFlags: 0
@@ -41157,6 +41274,10 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[3]'
       value: 
       objectReference: {fileID: 1773942757}
+    - target: {fileID: 2337560769071211656, guid: 498921a9fd4161a42a39b8d568dfd13c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 43bc30c36e6730c48b829daca7000dab, type: 2}
     - target: {fileID: 3713593049158346997, guid: 498921a9fd4161a42a39b8d568dfd13c, type: 3}
       propertyPath: m_Name
       value: Enemy6
@@ -41342,6 +41463,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1867406039}
+    - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1867406040}
   m_SourcePrefab: {fileID: 100100000, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
 --- !u!1 &1409050451
 GameObject:
@@ -43460,6 +43584,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7097290641293312885, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
   m_PrefabInstance: {fileID: 1606763436}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1486115984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1486115978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b3017ea3bd6e43bb86de5ac0d18a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: Frasco2
 --- !u!1 &1487890236
 GameObject:
   m_ObjectHideFlags: 0
@@ -44876,6 +45013,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1062447019}
+    - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1062447020}
   m_SourcePrefab: {fileID: 100100000, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
 --- !u!1001 &1543251646
 PrefabInstance:
@@ -44905,6 +45045,10 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[3]'
       value: 
       objectReference: {fileID: 225415723}
+    - target: {fileID: 2337560769071211656, guid: 498921a9fd4161a42a39b8d568dfd13c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 43bc30c36e6730c48b829daca7000dab, type: 2}
     - target: {fileID: 3713593049158346997, guid: 498921a9fd4161a42a39b8d568dfd13c, type: 3}
       propertyPath: m_Name
       value: Enemy5
@@ -44995,6 +45139,10 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[4]'
       value: 
       objectReference: {fileID: 1105951639}
+    - target: {fileID: 2337560769071211656, guid: 498921a9fd4161a42a39b8d568dfd13c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 43bc30c36e6730c48b829daca7000dab, type: 2}
     - target: {fileID: 3713593049158346997, guid: 498921a9fd4161a42a39b8d568dfd13c, type: 3}
       propertyPath: m_Name
       value: Enemy3
@@ -47029,6 +47177,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1486115979}
+    - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1486115984}
   m_SourcePrefab: {fileID: 100100000, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
 --- !u!1 &1606869427
 GameObject:
@@ -49015,6 +49166,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 1670056449}
+--- !u!114 &1670056452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670056449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b3017ea3bd6e43bb86de5ac0d18a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: Frasco7
 --- !u!1 &1680792856
 GameObject:
   m_ObjectHideFlags: 0
@@ -52443,114 +52607,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1176347537}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
---- !u!1 &1831925392
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1831925396}
-  - component: {fileID: 1831925395}
-  - component: {fileID: 1831925394}
-  - component: {fileID: 1831925393}
-  m_Layer: 0
-  m_Name: Resortera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!65 &1831925393
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1831925392}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1831925394
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1831925392}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1831925395
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1831925392}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1831925396
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1831925392}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.18, y: 0.66, z: -0.43}
-  m_LocalScale: {x: 0.51271886, y: 0.51271886, z: 0.51271886}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1835340223
 GameObject:
   m_ObjectHideFlags: 0
@@ -53229,6 +53285,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 1867406037}
+--- !u!114 &1867406040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867406037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b3017ea3bd6e43bb86de5ac0d18a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: Frasco3
 --- !u!1 &1869371721
 GameObject:
   m_ObjectHideFlags: 0
@@ -57812,6 +57881,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7097290641293312885, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
   m_PrefabInstance: {fileID: 2709302767984360682}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2077782394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077782386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827b3017ea3bd6e43bb86de5ac0d18a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: Frasco1
 --- !u!1 &2079468686
 GameObject:
   m_ObjectHideFlags: 0
@@ -59962,6 +60044,10 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[1]'
       value: 
       objectReference: {fileID: 302421451}
+    - target: {fileID: 2337560769071211656, guid: 498921a9fd4161a42a39b8d568dfd13c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 43bc30c36e6730c48b829daca7000dab, type: 2}
     - target: {fileID: 3713593049158346997, guid: 498921a9fd4161a42a39b8d568dfd13c, type: 3}
       propertyPath: m_Name
       value: Enemy1
@@ -60142,6 +60228,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2077782391}
+    - targetCorrespondingSourceObject: {fileID: 3580568463687368774, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2077782394}
   m_SourcePrefab: {fileID: 100100000, guid: 478aea9a4faf10b49b456e4dde985b9a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -60154,7 +60243,6 @@ SceneRoots:
   - {fileID: 812395019}
   - {fileID: 1419301096}
   - {fileID: 2084298948}
-  - {fileID: 1831925396}
   - {fileID: 1918400030}
   - {fileID: 994495782}
   - {fileID: 288096026}

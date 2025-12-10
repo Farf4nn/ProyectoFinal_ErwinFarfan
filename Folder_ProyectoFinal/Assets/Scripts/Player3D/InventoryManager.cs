@@ -4,13 +4,20 @@ using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] private List<string> items = new List<string>();
-    [SerializeField] private int maxItems = 10;
+    public static InventoryManager Instance { get; private set; }
+
+    [Header("IDs de los objetos requeridos (10 en total)")]
+    [SerializeField] private List<string> expectedItemIDs = new List<string>();
+
+    [Header("UI")]
     [SerializeField] private TMP_Text contadorText;
 
+    [Header("Referencias")]
     public DoorUnlock door;
 
-    public static InventoryManager Instance { get; private set; }
+    private Dictionary<string, bool> itemsDict = new Dictionary<string, bool>();
+    private int collected = 0;
+    private int maxItems => expectedItemIDs.Count;
 
     private void Awake()
     {
@@ -22,32 +29,58 @@ public class InventoryManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        InitializeDictionary();
+    }
+
+    private void InitializeDictionary()
+    {
+        itemsDict.Clear();
+
+        foreach (string id in expectedItemIDs)
+        {
+            if (!itemsDict.ContainsKey(id))
+                itemsDict.Add(id, false);
+        }
     }
 
     private void Update()
     {
         if (contadorText)
-            contadorText.text = $"Objetos: {items.Count}/{maxItems}";
+            contadorText.text = $"Objetos: {collected}/{maxItems}";
     }
 
-    public void AddItem(GameObject itemObject)
+    // Llamado por PickableItem
+    public void AddItem(string itemID)
     {
-        items.Add(itemObject.name);
+        if (!itemsDict.ContainsKey(itemID))
+        {
+            Debug.LogWarning("El ID no existe en expectedItemIDs: " + itemID);
+            return;
+        }
 
-        Debug.Log("Inventario actual: " + items.Count);
+        if (itemsDict[itemID])
+        {
+            Debug.Log("Objeto ya recogido: " + itemID);
+            return;
+        }
+
+        itemsDict[itemID] = true;
+        collected++;
+
+        Debug.Log($"Objeto añadido al inventario: {itemID} ({collected}/{maxItems})");
 
         CheckWinCondition();
     }
 
     public string GetInventoryText()
     {
-        if (items.Count == 0) return "Inventario vacío.";
+        string text = $"Objetos encontrados ({collected}/{maxItems}):\n";
 
-        string text = $"Objetos encontrados ({items.Count}/{maxItems}):\n";
-
-        foreach (var name in items)
+        foreach (var kv in itemsDict)
         {
-            text += "- " + name + "\n";
+            if (kv.Value)
+                text += "- " + kv.Key + "\n";
         }
 
         return text;
@@ -55,16 +88,18 @@ public class InventoryManager : MonoBehaviour
 
     private void CheckWinCondition()
     {
-        if (items.Count >= maxItems)
+        if (collected >= maxItems)
         {
-            GameTimer.Instance.isRunning = false;
+            Debug.Log("¡Todos los objetos fueron recogidos!");
 
-            PlayerPrefs.SetString("FinalTime", GameTimer.Instance.GetFormattedTime());
+            if (GameTimer.Instance != null)
+                GameTimer.Instance.isRunning = false;
+
+            if (GameTimer.Instance != null)
+                PlayerPrefs.SetString("FinalTime", GameTimer.Instance.GetFormattedTime());
 
             if (door != null)
                 door.UnlockDoor();
-
-            Debug.Log("¡GANASTE! La puerta está ahora desbloqueada.");
         }
     }
 }
